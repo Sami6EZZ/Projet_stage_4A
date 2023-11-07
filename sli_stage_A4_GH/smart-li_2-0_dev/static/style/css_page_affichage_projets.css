@@ -1,0 +1,383 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    min-width: fit-content;
+    background: radial-gradient(ellipse at center, #003180 10%, #191833 80%, rgb(2, 0, 27) 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-bottom: 0px;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+
+    
+
+}
+
+
+/* Style pour le div d'affichage de l'image */
+.secteur_image {
+    overflow: hidden;
+    max-width: fit-content;
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    position: relative;
+    min-height: fit-content;
+    top: 0%;
+    
+    margin-top: 0; /* Réinitialisez la marge supérieure à 0 */
+
+    @media (min-width: 900px) {
+        margin-top: -60px; /* Réglez la marge supérieure à -60px pour compenser la barre de navigation */
+    }
+}
+.secteur_image img {
+  height: 125px;
+  width: 300px;
+    object-fit: contain;
+}
+/*style de l'affichage des projets enregistrés*/
+#bloc_principal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.bouton_copie {
+  margin: 10px;
+  background: transparent;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  border-radius: 10px;
+  
+  
+}
+
+.bouton_copie button {
+  background: transparent;
+  border: none;
+  white-space: normal;
+  flex-wrap: nowrap;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  width: 295px;
+  height: 150px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-bottom: 15px;
+  position: relative;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: solid 1px cyan;
+  min-height: fit-content;
+}
+
+
+#bouton_plus {
+  background-color:#009EE0;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin-left: 35px;
+  margin-right: 30px;
+  width: 80px;
+  height: 80px;
+  font-size: 60px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.bouton_copie:hover,
+#bouton_plus:hover {
+  border: none;
+  box-shadow: 0px 0px 30px cyan;
+}
+
+.bouton_copie img {
+  width: 215px;
+  height: 100px;
+  margin-bottom: 0px;
+  align-items: flex-end;
+}
+.bouton_copie button span {
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+}
+
+
+
+.bouton_copie button .icone_X {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out, color 0s ease-in-out;
+}
+/*
+.button-wrapper button .close-icon:hover {
+  box-shadow:
+}
+*/
+.bouton_copie button:hover .icone_X {
+  opacity: 1;
+}
+
+.bouton_copie button .icone_X:hover::before {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.671);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  opacity: 1;
+  content: "Supprimer le projet";
+ 
+}
+
+
+  /* Styles pour la boîte de dialogue */
+.nom_projet {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  text-align: center;
+  justify-content: center;
+
+}
+
+.boite_dialogue {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  min-width: 300px;
+  text-align: center;animation-name: slideInprojet;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+
+}
+
+@keyframes slideInprojet {
+0% {
+top: -100vh; /* Départ de la position en dehors de la fenêtre */
+}
+100% {
+top: 50%; /* Arrivée à la position souhaitée */
+}
+
+}
+
+.fermer {
+  color: #aaa;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.titre_boite_dialogue {
+  display: flex;
+  margin-bottom: 10px;
+  
+
+}
+.nom_projet h2 {
+  font-family: Arial, sans-serif;
+  margin-left: 10px;
+
+}
+#form {
+  white-space: nowrap;
+}
+.dialogue-image {
+  width: 50px;
+  height: 55px;
+  margin-left: 40px;
+  margin-top: 5px;
+}
+
+#nom_nouveau_projet {
+
+  padding: 10px 10px;
+  font-size: medium;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  width: 256px;
+
+  border: 1px solid #8e8e8e;
+  
+}
+
+/* Styles pour le bouton */
+.nom_projet button[type="submit"] {
+  background-color:#0080b7
+  ;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: medium;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nom_projet button[type="submit"]:hover {
+  background-color: darkblue;
+}
+
+.nom_projet button[type="submit"]:active {
+  border: 2px solid black;
+}
+
+/*Style pour le popup_suppressionProjet*/
+
+ .popup {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.68);
+      z-index: 9999;
+      text-align: center;
+      justify-content: center;
+    }
+    
+    .popup_suppression {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      max-width: 470px;
+      text-align: center;
+      animation-name: slideInImpo;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-in-out;
+    }
+    
+    @keyframes slideInImpo {
+      0% {
+        top: -100vh;
+      }
+      100% {
+        top: 50%;
+      }
+    }
+    
+    .fermer {
+      color: #aaa;
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    .fermer:hover,
+    .fermer:focus {
+      color: black;
+      text-decoration: none;
+    }
+    
+    .popup_suppression h3 {
+      font-weight: bold;
+      color: rgb(215, 0, 0);
+    }
+    
+    .popup_suppression .image-poubelle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .popup_suppression .image-poubelle img {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .popup_suppression .boutons-popup-supp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .popup_suppression .boutons-popup-supp button {
+      margin: 0 10px;
+      height: 40px;
+      width: 160px;
+      padding: 5px 10px;
+      border: 3px solid black;
+      border-radius: 90px;
+      font-weight: bold;
+      font-size: medium;
+      cursor: pointer;
+    }
+    
+    .popup_suppression .boutons-popup-supp button.annuler {
+      color: black;
+      background-color: white;
+    }
+    
+    .popup_suppression .boutons-popup-supp button.supprimer {
+      color: white;
+      background-color:rgb(235, 0, 0);
+    }
+    .popup_suppression .boutons-popup-supp button.annuler:hover {
+      background-color: lightgray;
+    }
+    
+    
+    
+    .popup_suppression .boutons-popup-supp button.supprimer:hover {
+      background-color: rgb(0, 0, 0);
+    }
+    

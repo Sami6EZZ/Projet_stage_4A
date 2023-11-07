@@ -1,0 +1,643 @@
+body {
+            
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(ellipse at center, #003180 10%, #191833 70%, rgb(2, 0, 27) 100%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+
+  
+}
+
+/* CSS pour le div d'affichage de l'image */
+.images {
+overflow: hidden;
+height: 150px;
+display: flex;
+align-items: flex-start;
+justify-content: center;
+text-align: center;
+position: relative;
+background-color: transparent;
+}
+
+.icone-deconnexion {
+position: absolute;
+top: 20px;
+right: 20px;
+width: 40px;
+height: 40px;
+
+}
+
+.icone-accueil {
+position: absolute;
+top: 20px;
+left: 20px;
+width: 40px;
+height: 40px;
+}
+
+#image_smart-li {
+height: 125px;
+width: 300px;
+margin: 0 10px;
+}
+
+.icone {
+width: 100%;
+height: 100%;
+cursor: pointer;
+
+}
+/* CSS pour la réactivité 
+@media only screen and (max-width: 600px) {
+#image_smart-li {
+  width: calc(79% - 60px);
+}
+}
+*/
+.options {
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap; 
+width: 100%;
+margin: 5vh 0vw;
+animation: fadeInin 0.3s ease-in-out forwards;
+}
+
+.bloc {
+display: flex;
+flex-direction: column;
+align-items: center;
+white-space: nowrap;
+margin: 2vh 3vw;
+transition: all 0.3s ease-in-out;
+opacity: 0;
+transform: translateX(-50%);
+flex-basis: 25%; 
+}
+
+@media screen and (max-width: 768px) {
+.bloc {
+  flex-basis: 50%;
+}
+}
+
+
+@keyframes fadeInin {
+0% {
+  opacity: 0;
+  transform: translateY(-50%);
+}
+100% {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+.bloc {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      white-space: nowrap;
+      margin: 2vh 3vw; /* Modifier les valeurs de marge en pourcentage */
+      transition: all 0.3s ease-in-out;
+      opacity: 0;
+      transform: translateX(-50%);
+}
+.options .bloc:nth-child(1) {
+      animation: fadeInin 0.3s ease-in-out forwards 0.1s;
+    }
+    
+    .options .bloc:nth-child(2) {
+      animation: fadeInin 0.3s ease-in-out forwards 0.2s;
+    }
+    
+    .options .bloc:nth-child(3) {
+      animation: fadeInin 0.3s ease-in-out forwards 0.3s;
+    }
+    
+.bloc img {
+      width: 250px;
+      height: auto;
+      object-fit: contain;
+
+}
+.bloc:hover {
+      box-shadow: 0px 0px 30px rgb(0, 0, 0);
+}
+    
+.bloc label {
+      margin-top: 5px;
+      font-size: large;
+      color: aliceblue;
+      font-family: Arial, Helvetica, sans-serif;
+}
+.bloc.clicked {
+box-shadow: none;
+
+}
+.bouton_gen_vider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5vh;
+}
+
+.bouton_gen_vider button {
+  width: 300px;
+  height: 30px;
+  margin: 0 10px;
+  font-size: large;
+}
+#nom_projet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      padding: 20px;
+      max-width: 900px;
+
+      
+    }
+    
+    #labelSpan {
+      font-size: 24px;
+      opacity: 0;
+      animation: fadeInLeft 1s ease-in-out forwards;
+      color: white;
+    }
+    
+    #valeurSpan {
+      font-size: 24px;
+      overflow: hidden;
+      white-space: nowrap;
+      opacity: 0;
+      color: white;
+      animation: revealText 1500ms ease-in-out forwards;
+    }
+    
+    #underline {
+      border: none;
+      height: 1px;
+      background-color: white;
+      width: 0;
+      animation: slideInUnderline 1s ease-in-out forwards;
+    }
+    
+    @keyframes fadeInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes revealText {
+       0% {
+        width: 0;
+      }
+      100% {
+        width: auto;
+        opacity: 1;
+      }
+    }
+    
+    @keyframes slideInUnderline {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+/*Style de la boite de dialogue 'import'*/
+    
+.arriere_plan_popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      text-align: center;
+      justify-content: center;
+    
+}
+    
+.impo_popup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      min-width: 300px;
+      text-align: center;
+      animation-name: slideInImpo;
+      animation-duration: 0.5s;
+      animation-timing-function: ease-in-out;
+    
+}
+    @keyframes slideInImpo {
+      0% {
+        top: -100vh; /* Départ de la position en dehors de la fenêtre */
+      }
+      100% {
+        top: 50%; /* Arrivée à la position souhaitée */
+      }
+      }
+    
+    
+.titre_impo_popup {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #000000;
+    }
+    
+    
+.choix_fichier {
+      margin-bottom: 20px;
+      justify-content: center;
+
+    }
+    
+.choix_fichier label {
+      font-size: 14px;
+      color: #333;
+    }
+    
+.choix_fichier input[type="file"] {
+      display: block;
+      width: 100%;
+      margin-top: 5px;
+      
+    }
+    
+#submit_impo_btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+    
+    #submit_impo_btn:hover {
+      background-color: #0056b3;
+      cursor: pointer;
+    }
+
+    .btn-impo {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .btn-impo button {
+      padding: 8px 16px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+/*non utilisé*/ 
+#alert {
+      display: none;
+      margin-left: 5px;
+      background-color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+    
+#messageimport1388txt {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+/**/
+.loader {
+      display: block;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 2s linear infinite;
+      margin: 5px 5px;
+}
+
+@keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+}
+
+
+.image-animation {
+display: none;
+width: 30px;
+height: 30px;
+margin: 5px 5px;
+}
+.image-animation img {
+width: 100%;
+height: 100%;
+object-fit: contain;
+
+
+}
+
+/*bouton en rouge en cas d'erreur d'importation*/
+.btn-erreur {
+  background-color: #ff0000; /* Couleur rouge pour le bouton en erreur */
+}
+
+
+.bloc_erreur {
+  width: 50vw;
+  max-height: 30vh;
+  overflow-y: auto; /* Activer le défilement vertical si nécessaire */
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f8f8f8;
+}
+
+.liste_erreur {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.liste_erreur li {
+  margin-bottom: 5px;
+  word-wrap: break-word; /* Mettre en wrap les lignes longues */
+}
+
+
+
+
+
+/*Style pour la boite de dialogue 'tables_1388'*/
+.popup_tables{
+position: absolute;
+left: 50%;
+top: 40vh;
+transform: translate(-50%, -50%);
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+min-width: 300px;
+text-align: center;
+animation-name: slideIn;
+animation-duration: 0.5s;
+animation-timing-function: ease-in-out;
+}
+
+@keyframes slideIn {
+0% {
+top: -100vh; /* Départ de la position en dehors de la fenêtre */
+}
+100% {
+top: 40vh; /* Arrivée à la position souhaitée */
+}
+}
+
+
+
+.titre_popup_tables {
+display: flex;
+font-size: 20px;
+justify-content: center;
+text-align: nowrap;
+}
+
+#table_select {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    padding: 5px 0px;
+    border: solid 1px;
+    box-shadow: inset;
+  }
+
+#form_liste_tables button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+#form_liste_tables button:hover {
+    background-color: #0056b3;
+  }
+
+  /*Style pour la boite de dialogue 'Exportation txt/excel'*/
+
+  
+  
+  .popup_expo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    max-width: 400px;
+    text-align: center;animation-name: slideInExpo;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in-out;
+    
+    }
+    @keyframes slideInExpo {
+      0% {
+        top: -100vh; /* Départ de la position en dehors de la fenêtre */
+      }
+      100% {
+        top: 50%; /* Arrivée à la position souhaitée */
+      }
+      }
+  .titre_expo_popup {
+      margin-bottom: 20px;
+      font-size: 20px;
+      color: #000000;
+      }
+  
+  .fermer {
+    color: #aaa;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .fermer:hover,
+  .fermer:focus {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .image_poubelle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    border-radius: 10px;
+  }
+  
+  .popup-image-txtexl {
+    width: 60px;
+    height: 70px;
+    box-shadow: 0px 0px 0px rgba(255, 255, 255, 0);
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    margin: 0 5px;
+
+}
+#icone_excel:hover {
+box-shadow: 0px 0px 30px rgb(3, 252, 7);
+}
+#icone_txt:hover {
+box-shadow: 0px 0px 30px rgb(150, 150, 150);
+}
+#icone_txt.clicked {
+box-shadow: none;
+}
+#icone_excel.clicked {
+  box-shadow: none;
+  }
+
+/*Style pour le popup_suppressionProjet*/
+
+.popup_vider {
+display: none;
+position: fixed;
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.68);
+z-index: 9999;
+text-align: center;
+justify-content: center;
+}
+
+.popup_vider_table {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: #fff;
+padding: 20px;
+border-radius: 5px;
+max-width: 450px;
+text-align: center;
+animation-name: slideInvider;
+animation-duration: 0.5s;
+animation-timing-function: ease-in-out;
+}
+
+@keyframes slideInvider {
+0% {
+  top: -100vh;
+}
+100% {
+  top: 50%;
+}
+}
+/* répeter dans d'autre popup
+
+.close {
+color: #aaa;
+position: absolute;
+top: 5px;
+right: 10px;
+font-size: 28px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+}
+*/
+.popup_vider_table h3 {
+font-weight: bold;
+color: rgb(215, 0, 0);
+}
+
+.popup_vider_table .image_poubelle {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.popup_vider_table .image_poubelle img {
+width: 60px;
+height: 60px;
+}
+
+.popup_vider_table .boutons_supp {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.popup_vider_table .boutons_supp button {
+margin: 0 10px;
+height: 40px;
+width: 160px;
+padding: 5px 10px;
+border: 3px solid black;
+border-radius: 90px;
+font-weight: bold;
+font-size: medium;
+cursor: pointer;
+}
+
+.popup_vider_table .boutons_supp button.annuler {
+color: black;
+background-color: white;
+}
+
+.popup_vider_table .boutons_supp button.supprimer {
+color: white;
+background-color:rgb(235, 0, 0);
+}
+.popup_vider_table .boutons_supp button.annuler:hover {
+background-color: lightgray;
+}
+
+
+
+.popup_vider_table .boutons_supp button.supprimer:hover {
+background-color: rgb(0, 0, 0);
+}
+

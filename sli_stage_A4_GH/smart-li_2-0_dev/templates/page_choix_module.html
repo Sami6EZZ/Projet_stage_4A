@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix de la norme</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/css_page_2normes.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/style_barre_de_navigation.css') }}">
+
+</head>
+<body>
+        
+
+        
+    <nav>
+		<div class="logo_ligeron">
+			<!-- img ligeron --> 
+			<img src="{{url_for('static', filename='images/LIGERON-BLANC-RVB.png')}}" alt="Ligeron">
+		</div>
+        <!--
+		<div class='nav_btn'>
+			<button>1388</button>	
+			<button>Consulter la base de données</button>
+			<button>S3000L</button>
+		</div>
+        -->
+        <div class="username">
+            <h3><span style="color: #fff; font-family: Arial, sans-serif; margin-right: 10px;">Bonjour <span style="font-weight: bold" id="id_nom_utilisateur"></span></span></h3>
+			<img style="cursor: pointer" src="{{url_for('static', filename='images/power-off.png')}}" id="icone_deconnexion" alt="power-off">
+		</div>
+		
+
+	</nav>
+    <div class="bloc-page">
+        
+        <div class="bloc-image">
+            <!-- img smartli--> 
+            <img   src="{{url_for('static', filename='images/smartLI_im_logo_sans_arriere_plan.png')}}"  alt="Ligeron">
+        </div>
+        <div class="bloc-bubbles">
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:30;"></span>
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:30;"></span>
+            <span style="--i:11;"></span>
+            <span style="--i:12;"></span>
+            <span style="--i:24;"></span>
+            <span style="--i:10;"></span>
+            <span style="--i:14;"></span>
+            <span style="--i:23;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:16;"></span>
+            <span style="--i:19;"></span>
+            <span style="--i:20;"></span>
+            <span style="--i:22;"></span>
+            <span style="--i:25;"></span>
+            <span style="--i:18;"></span>
+            <span style="--i:21;"></span>
+            <span style="--i:15;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:26;"></span>
+            <span style="--i:17;"></span>
+            <span style="--i:13;"></span>
+            <span style="--i:30;"></span>
+            
+        </div>
+        <div class="bloc-module">
+            <div class="image">
+              <img id="image_1388" src="{{url_for('static', filename='images/logo2_1388.png')}}" alt="image1">
+              <button  onclick="gen_projet_tables()">Module 1388</button>
+            </div>
+            <div class="image">
+              <img id="image_S3000L" src="{{url_for('static', filename='images/logo_S3000L.png')}}" alt="image2">
+              <button   >Module S3000L</button>
+            </div>
+          </div>
+          
+    </div>
+    
+    <script  src="{{ url_for('static', filename='javascript/js_page_2normes.js') }}"></script>
+
+</body>
+</html>

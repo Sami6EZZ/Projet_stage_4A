@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Module 1388</title>
+	<style>
+		
+        body {
+			margin: 0;
+			box-sizing: border-box;
+			min-width: fit-content;
+			background-image:url("/static/images/smartLI_arr_plan_1.png");
+			background-size: cover;
+			background-attachment: fixed;
+  			background-position: center bottom;
+			background-repeat: no-repeat;
+			padding-bottom: 0px;
+			font-family: Arial, sans-serif;
+
+			
+
+		}
+		label {
+			font-weight: bold;
+		}
+		
+		nav {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background-color: #048cc7;
+			height: 60px;
+			padding: 0 20px;
+			flex-wrap: nowrap;
+			white-space: nowrap;
+			max-width: 100%;
+
+			
+			
+
+		}
+
+		nav img {
+			height: 80%;
+			margin-right: 10px;
+			display: flex;
+			align-items: center;
+		}
+
+		.nav_btn {
+			
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.nav_btn button {
+			background-color: #fff;
+			border: 1px solid #000;
+			padding: 5px 10px;
+			margin-left: 10px;
+			cursor: pointer;
+			height: 80%;
+			font-size: 16px;
+			border-radius: 5px;
+			text-align: center;
+			flex-wrap: nowrap;
+			min-width: fit-content;
+			}
+
+		.username {
+			display: flex;
+			align-items: center;
+			margin-left: 20px;
+			min-width: fit-content;
+		}
+
+		
+
+
+		/* Style pour le formulaire de connexion*/
+		.formulairedeconnexion {
+            background-color: #f0f0f0;
+            padding: 10px;
+			
+        }
+        .formulairedeconnexion form {
+            display: inline-block;
+			
+
+
+        }
+        .form-ligne {
+            display: flex;
+            justify-content: space-between;
+			margin-left: 25px;
+        }
+        .form-connexion-bdd {
+        flex: 1;
+        margin-right: 20px;
+        margin-bottom: 10px;
+
+        }
+
+        .form-connexion-bdd label {
+        display: block;
+        margin-right: 5px;
+        white-space: nowrap;
+
+        }
+
+        .formulairedeconnexion input {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5%;
+       
+        }
+		.connexion_block {
+			display: flex;
+			flex-direction: column;
+
+			
+		}
+		.conn_a_bdd, .conn_new_bdd {
+			display: flex;
+            justify-content: space-between;
+			align-items: center;
+		}
+		.conn_a_bdd label, .conn_new_bdd label {
+			display: inline-block;
+ 			margin-right: 10px;
+			
+			
+		}
+
+
+		.conn_a_bdd button, .conn_new_bdd button {
+			display: inline-block;
+  			margin-right: 10px;
+		}
+		
+		
+		#alert p {
+ 		  margin-top: 3px;
+		  margin-bottom: 0px;
+		}
+		
+
+
+
+		
+        
+
+		/* Style pour le div d'affichage de l'image */
+		.image-container {
+			overflow: hidden;
+            height: 100px;
+			display: block;
+			margin: 0 auto;
+			align-items: center;
+			justify-content: center;
+            text-align: center;
+			
+		}
+        .image-container img {
+			height: 100px;
+            object-fit: contain;
+		}
+
+		/* Style pour les boutons d'import/export */
+		.options {
+			display: flex;
+			padding: 20px 35px;
+
+			
+		}
+
+		.option-n {
+			display: flex;
+			flex-direction: column;
+			margin-right: 30px;
+		}
+		.option-n label, .option-n button, .option-n p {
+			
+			margin-bottom: 10px;
+			white-space: nowrap;
+			max-width: fit-content;
+
+		}
+
+		.import-export-btn {
+			display: flex;
+			flex-wrap: wrap;
+            margin-top: 30px;
+            padding: 5px 40px;
+			
+		}
+		.import-btn {
+			float: left;
+			width: 50%;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+
+		.export-btn {
+			float: right;
+			width: 50%;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+		
+		.import-export-btn label {
+            
+			display: block;
+			margin-bottom: 10px;
+		}
+
+		#import_txt_btn, #import_xls_btn {
+			display: block;
+
+            background-color: #cbcbcb;
+			border: 1px solid #000;
+			padding: 5px 10px;
+			margin-left: 10px;
+			cursor: pointer;
+			border-radius: 5px;
+			box-sizing: border-box;
+            transition: background-color 0.3s ease-in-out;
+		}
+        #import_txt_btn:hover, #import_xls_btn:hover{
+            background-color: #ededed;
+        }
+        #export_txt_btn, #export_xls_btn {
+			display: block;
+
+            background-color: #2dde3f;
+			border: 1px solid #000;
+			padding: 5px 10px;
+			margin-left: 10px;
+			cursor: pointer;
+			margin-top: 10px;
+			border-radius: 5px;
+			box-sizing: border-box;
+            transition: background-color 0.3s ease-in-out;
+        }
+        #export_txt_btn:hover, #export_xls_btn:hover{
+            background-color: #91f98e;
+        }
+		.btn-message {
+			display: flex;
+			align-items: center;
+		}
+		.green {
+			color: rgb(3, 161, 3);
+		}
+		.import_fichier {
+			margin: 10px;
+			margin-bottom: 20px;
+			border-radius: 3px;
+			background-color: white;
+			}
+
+		.choix_fichier {
+			display: flex;
+		}
+
+		.choix_fichier input[type="file"] {
+			width: 100%;
+			margin-bottom: 10px;
+		}
+
+		.border-success {
+  			border-color: #28a745 !important;
+		}
+
+		.loader {
+			
+			border: 4px solid #f3f3f3;
+			border-top: 4px solid #3498db;
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			animation: spin 2s linear infinite;
+			margin-left: 5px;
+			margin-top: 5px;
+		}
+
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+
+
+
+	</style>
+</head>
+<body>
+	
+	<nav>
+		<!-- img ligeron --> 
+		<img  src="{{url_for('static', filename='images/logo_ligeron.png')}}" alt="Ligeron">
+		<div class='nav_btn'>
+		<button>1388</button>	
+		<button onclick="window.location.href ='page_affichage_projets'">Consulter la base de données</button>
+		<button>S3000L</button>
+		</div>
+        <div class="username">
+            <span style="color: #fff; font-family: Arial, sans-serif;">Bonjour <span style="font-weight: bold" id="id_nom_utilisateur"></span></span>
+        </div>
+		<img id="power-off-img" style="height: 60%; margin-right: 0px; margin-left: 10px; cursor: pointer;" src="{{url_for('static', filename='images/power-off.png')}}" alt="Ligeron">
+
+	</nav>
+	<div class="image-container">
+		<!-- img smartli--> 
+		<img   src="{{url_for('static', filename='images/smartLI_im_logo.png')}}"  alt="Ligeron">
+	</div>
+
+
+
+	<div class="bouton_creer_vider_tables">
+		<button id="btn-generate" >Générer les tables</button>
+		<button id="btn-clear" onclick="vider_tables()" >Vider les tables</button>
+	</div>
+
+	
+	<div class="import-export-btn">
+		<div class="import-btn">
+		<label >Choix du fichier :</label>
+		<div class="import_fichier">
+			<form method="POST" action="{{ url_for('import_fichier_1388') }}" enctype="multipart/form-data" id="upload-form">
+				<div class="choix_fichier" >
+				  <label for="file"></label>
+				  <input type="file" class="form-control-file" id="file" name="file" accept=".txt, .xls, .xlsx">
+				</div>
+					<button type="submit" id="submit-btn" class="btn btn-primary" style="display:none;">Importer le fichier</button>
+  			</form>
+		</div>
+		<label for="import_txt_btn">Import des données :</label>
+		<div class="btn-message">
+		<button id="import_txt_btn"  onclick="choix_fichier_import_dump_txt_Excel_1388()" >Fichier</button>
+		<div id="alert" style="margin-left: 5px; background-color: #fff;"> <p id="messageimport1388txt"></p></div></div>
+		
+		</div>
+		
+		<div class="export-btn">
+		<label>Export du fichier :</label>
+		<div class="btn-message">
+		<button id="export_txt_btn"   onclick="export_dump_1388()">Fichier .txt</button>
+		<div id="alert" style="margin-left: 5px; background-color: #fff;"> <p id="messageexport1388txt"></p></div></div>
+		<div class="btn-message">
+		<button id="export_xls_btn" onclick="export_fichier_Excel_1388()">Fichier .xlx</button>
+		<div id="alert" style="margin-left: 5px; background-color: #fff;"> <p id="messageexport1388xls"></p></div></div>
+		</div>
+	</div >
+	
+	  
+ <script>
+			
+	var nom_utilisateur = localStorage.getItem('nom_utilisateur');
+	var nom_bdd = localStorage.getItem('nom_bdd');
+	var mot_de_passe = localStorage.getItem('mot_de_passe');
+	const host = localStorage.getItem('host');
+
+	const nom_utilisateur_span = document.getElementById('id_nom_utilisateur');
+	if (nom_utilisateur) {
+		nom_utilisateur_span.textContent = nom_utilisateur;
+	}
+	else {	nom_utilisateur_span.textContent = "@"
+	}
+	
+
+	//Script JavaScript pour intercepter l'événement de changement de fichier et soumettre automatiquement le formulaire -->
+	// Sélection du formulaire et du champ de fichier avec JavaScript
+	const uploadForm = document.querySelector('#upload-form');
+	const fileInput = document.querySelector('#file');
+
+
+	
+    function Deconnexion () {
+            window.location.href=('page_connexion')
+        }
+	function P_inscription() {
+		window.location.href ="page_inscription";
+
+	}
+	function afficher_projets() {
+		window.location.href ="page_affichage_projet";
+	}
+    
+	// fonction transferées à la page 2normes
+	function gen_projet_tables() {
+
+		var nom_projet = document.getElementById('id_nom_projet').value;
+		localStorage.setItem('nom_projet', nom_projet);
+		const data = {
+                'username': nom_utilisateur,
+                'mdp': mot_de_passe,
+                'bdd': nom_bdd,
+				'host': host,
+				'projet': nom_projet
+			};
+		fetch('/generateur_schema_&_tables_1388', {method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+			})
+		.then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erreur lors de la création du projet.');
+                })
+				.then(data => {
+					const messageElement = document.getElementById("messagedeconnexion");
+					messageElement.innerHTML = data.message;
+                    
+					if (data.message === 'Le projet '+nom_projet+' a été créé avec succès !') {
+        				messageElement.classList.add('green');
+					}
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById("messagedeconnexion").innerHTML =error.message;
+                })
+	}
+	function gen_1388() {
+
+			var nom_projet = localStorage.getItem('nom_projet');
+			const conn = {
+                'username': nom_utilisateur,
+                'mdp': mot_de_passe,
+                'bdd': nom_bdd,
+				'host': host,
+				'nom_projet': nom_projet
+			};
+		fetch('/generateur_tables_1388', {method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(conn)
+			})
+		.then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erreur lors de la génération des tables.');
+                })
+                .then(data => {
+                    document.getElementById("messagegentables").innerHTML =data.message;
+            
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById("messagegentables").innerHTML =error.message;
+                });
+			
+	}
+	function supprimer_1388() {
+		
+			var nom_projet = localStorage.getItem('nom_projet');
+			const conn = {
+                'username': nom_utilisateur,
+                'mdp': mot_de_passe,
+                'bdd': nom_utilisateur,
+				'host': host,
+				'nom_projet': nom_projet
+			};
+		fetch('/supprimer_tables_1388', {method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(conn)
+			})
+		.then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erreur lors de la suppression des tables.');
+                })
+                .then(data => {
+					const messageElement = document.getElementById("messagesuppression");
+                    messageElement.innerHTML =data.message;
+            
+                })
+                .catch(error => {
+                    console.error(error);
+                    document.getElementById("messagesuppression").innerHTML =error.message;
+                });
+			}
+
+
+
+	function vider_tables () {
+
+		var nom_projet = localStorage.getItem('nom_projet');
+			const conn = {
+                'username': nom_utilisateur,
+                'mdp': mot_de_passe,
+                'bdd': nom_utilisateur,
+				'host': host,
+				'nom_projet': nom_projet
+			};
+
+
+		fetch('/vider_tables', {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(conn)
+			})
+		.then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erreur lors de la suppression des tables.');
+                })
+		.then(data => {
+			// Affichage du message retourné dans une fenêtre contextuelle
+			alert(data.message);
+			
+		})
+		.catch(error => {
+			// En cas d'erreur, affichage du message d'erreur dans une fenêtre contextuelle
+			alert('Erreur : ' + error.message);
+		});
+		}
+
+
+
+	
+
+	function choix_fichier_import_dump_txt_Excel_1388() {
+	// Récupération du champ d'entrée pour le fichier
+	var fileInput = document.getElementById("file");
+        
+        // Récupération du fichier sélectionné
+        var file = fileInput.files[0];
+
+        // Vérification du type de fichier
+        if (file.type === "text/plain") {
+			// Appel de la méthode "submit()" du formulaire pour soumettre automatiquement le formulaire
+			uploadForm.submit();
+            import_dump_txt_1388();
+        } else if (file.type === "application/vnd.ms-excel" || file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet") {
+			// Appel de la méthode "submit()" du formulaire pour soumettre automatiquement le formulaire
+			uploadForm.submit();
+            import_dump_Excel_1388();
+        } else {
+            // Affichage d'un message d'erreur si le type de fichier n'est pas pris en charge
+            var messageElement = document.getElementById("messageimport1388txt");
+            messageElement.innerHTML = "Le type de fichier n'est pas pris en charge. Veuillez sélectionner un fichier .txt, .xls ou .xlsx.";
+        }
+    }
+	//je pense fonction non utilisée
+	function choix_fichier_import_dump_Excel_1388() {
+			// Appel de la méthode "submit()" du formulaire pour soumettre automatiquement le formulaire
+			uploadForm.submit();
+			import_dump_Excel_1388();
+	}
+	function import_dump_txt_1388() {
+
+			// Ajouter l'indicateur de chargement
+			var loader = document.createElement('div');
+			loader.classList.add('loader');
+			document.getElementById('import_txt_btn').insertAdjacentElement('afterend', loader);
+			document.getElementById('import_txt_btn').disabled = true;
+
+			// Lancer la requête Flask
+			var nom_projet = localStorage.getItem('nom_projet');
+			const conn = {
+                'username': nom_utilisateur,
+                'mdp': mot_de_passe,
+                'bdd': nom_bdd,
+				'host': host,
+				'nom_projet': nom_projet
+			};
+		fetch('/import_txt_1388', {method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(conn)
+			})
+		.then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erreur lors de l\'importation du fichier');
+                })
+                .then(data => {
+					// Supprimer l'indicateur de chargement
+					loader.remove();
+            		document.getElementById('import_txt_btn').disabled = false;
+                    document.getElementById("messageimport1388txt").innerHTML =data.message;
+            
+                })
+                .catch(error => {
+                    console.error(error);
+					// Supprimer l'indicateur de chargement
+					loader.remove();
+            		document.getElementById('import_txt_btn').disabled = false;
+                    document.getElementById("messageimport1388txt").innerHTML =error.message;
+                });
+	}
+
+	function import_dump_Excel_1388() {
+
+			// Ajouter l'indicateur de chargement
+			var loader = document.createElement('div');
+			loader.classList.add('loader');
+			document.getElementById('import_txt_btn').insertAdjacentElement('afterend', loader);
+			document.getElementById('import_txt_btn').disabled = true;
+
+			// Lancer la requête Flask
+
+			var nom_projet = localStorage.getItem('nom_projet');
+			const conn = {
+                'username': nom_utilisateur,
+                'mdp': mot_de_passe,
+                'bdd': nom_bdd,
+				'host': host,
+				'nom_projet': nom_projet
+			};
+		fetch('/import_Excel_1388', {method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(conn)
+			})
+		.then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                    throw new Error('Erreur lors de l\'importation du fichier');
+                })
+                .then(data => {
+					// Supprimer l'indicateur de chargement
+					loader.remove();
+            		document.getElementById('import_txt_btn').disabled = false;
+                    document.getElementById("messageimport1388txt").innerHTML =data.message;
+            
+                })
+                .catch(error => {
+                    console.error(error);
+					// Supprimer l'indicateur de chargement
+					loader.remove();
+            		document.getElementById('import_txt_bt').disabled = false;
+                    document.getElementById("messageimport1388txt").innerHTML =error.message;
+                });
+	}
+
+
+	function export_dump_1388() {
+
+			var nom_projet = localStorage.getItem('nom_projet');
+			const conn = {
+                'username': nom_utilisateur,
+                'mdp': mot_de_passe,
+                'bdd': nom_bdd,
+				'host': host,
+				'nom_projet': nom_projet
+			};
+
+		fetch('/export_txt_1388', {method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(conn)
+			})
+			.then(response => {
+            if (response.ok) {
+                return response.blob();
+            }
+            throw new Error('Erreur lors de l\'exportation du fichier');
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(new Blob([blob]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', nom_projet + '_Fichier_Smart-LI.txt');
+            document.body.appendChild(link);
+            link.click();
+        })
+        .catch(error => {
+            console.error(error);
+            document.getElementById("messageexport1388txt").innerHTML = error.message;
+        });
+	}
+	
+
+	function export_fichier_Excel_1388() {
+
+		var nom_projet = localStorage.getItem('nom_projet');
+		const conn = {
+			'username': nom_utilisateur,
+			'mdp': mot_de_passe,
+			'bdd': nom_bdd,
+			'host': host,
+			'nom_projet': nom_projet
+		};
+
+		fetch('/export_Excel_1388', {method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(conn)
+		})
+		.then(response => {
+		if (response.ok) {
+			return response.blob();
+		}
+		else {
+     		throw new Error('Erreur lors de l\'exportation du fichier Excel : ' + response.statusText);
+    		}		
+		})
+		.then(blob => {
+		const url = window.URL.createObjectURL(new Blob([blob]));
+		const link = document.createElement('a');
+		link.href = url;
+		link.setAttribute('download', nom_projet + '_Fichier_Smart-LI.xlsx');
+		document.body.appendChild(link);
+		link.click();
+		})
+		.catch(error => {
+		console.error(error);
+		document.getElementById("messageexport1388xls").innerHTML = error.message;
+		});
+	}
+
+	
+
+	// Fonction pour vider le dossier 'fichiers' des fichiers exportés
+	window.addEventListener('beforeunload', function(event) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/vider_dossier_desFichiers", true);
+    xhr.send();
+	});
+	// Fonction pour se déconnecter et revenir à la page de connexion
+	document.getElementById("power-off-img").addEventListener("click", function() {
+		window.location.href=('page_connexion')
+	});
+ </script>
+</body>
+</html>

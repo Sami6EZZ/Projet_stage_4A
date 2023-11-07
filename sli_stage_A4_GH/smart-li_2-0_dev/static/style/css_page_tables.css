@@ -1,0 +1,240 @@
+body {
+  background-image:url("/static/images/ftm3.png");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#bloc-table {
+  width: 80%;
+  height: 70%;
+  position: relative;
+  overflow: auto;
+  background-color: #fff;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: separate;
+}
+thead{
+  position: sticky;
+  top: 0;  /*l'entete reste visible en position sticky meme si on defile le contenue de la table vers le bas*/
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+
+}
+.nombre-ligne {
+text-align: center;
+width: fit-content; 
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid black;
+
+}
+th {
+  background-color: #f2f2f2;
+
+  background: linear-gradient(to bottom, #f2f2f2, #e6e6e6);
+}
+tr:hover {
+  background-color: #e2e2e2;
+}
+
+.colonne-checkbox {
+  text-align: center;
+}
+
+.case-modifiable {
+  display: inline-block;
+  width: fit-content;
+  box-sizing: border-box;
+  padding: 6px;
+  border: 1px solid #ccc;
+}
+
+
+.bouton-enregistrer{
+  display: inline-block;
+  padding: 7px 40px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  background-color: #ffffff;
+  color: rgb(0, 112, 217);
+  font-size: large; font-weight: bold;
+  border-radius: 30px;
+  margin-bottom: 5px;
+  
+}
+.bouton-enregistrer:hover {
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+}
+
+#titres {
+display: flex;
+align-items: center;
+flex-wrap: wrap; 
+justify-content: space-between;
+width: 100%;
+}
+.bloc-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px 100px;
+  
+}
+#icone_exit {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+
+#labelSpan {
+  font-size: 24px;
+  opacity: 0;
+  animation: fadeInLeft 1s ease-in-out forwards;
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+}
+
+#valeurSpan {
+  font-size: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  color: rgb(255, 255, 255);
+  animation: revealText 1500ms ease-in-out forwards;
+}
+#labelSpan2 {
+  font-size: 24px;
+  opacity: 0;
+  animation: fadeInLeft 1s ease-in-out forwards;
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+
+}
+
+#valeurSpan2 {
+  font-size: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  color: rgb(255, 255, 255);
+  animation: revealText 1500ms ease-in-out forwards;
+}
+
+#underline {
+  border: none;
+  height: 1px;
+  background-color: rgb(255, 255, 255);
+  width: 0;
+  animation: slideInUnderline 1s ease-in-out forwards;
+  animation-delay:1000ms; /* Ajout du délai de 500ms */
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes revealText {
+   0% {
+    width: 0;
+  }
+  100% {
+    width: auto;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUnderline {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+#table_select {
+  
+  display: none;
+  font-size: 16px;
+  font-weight: bolder;
+  height: 25px;
+  border-radius: 5px;
+}
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10px;
+  
+ 
+}
+
+.pagination .bouton-precedente,
+.pagination .bouton-suivante{
+  background-color: #ededed;
+  color: #000000;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 3px;
+}
+
+.pagination .bouton-precedente:hover,
+.pagination .bouton-suivante:hover {
+  background-color: #c7c7c7;
+}
+
+.pagination .page-input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 30px;
+  text-align: center;
+  height: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+}
+
+.pagination .total-pages {
+  padding: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 5px;
+  width: fit-content;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: medium;
+
+}

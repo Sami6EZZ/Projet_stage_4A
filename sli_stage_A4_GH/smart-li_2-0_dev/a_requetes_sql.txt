@@ -1,0 +1,59 @@
+f_liste_projets: cur.execute("SELECT schema_name FROM information_schema.schemata WHERE schema_name NOT IN ('pg_catalog', 'information_schema', 'public');")
+f_supprimer_projet : query = f'DROP SCHEMA "{nom_schema}" CASCADE;'
+
+f_shema_tables : 
+cursor.execute((f'CREATE SCHEMA "{self.nom_schema}" AUTHORIZATION "{self.nom_utilisateur}";'))
+
+cursor.execute(f'GRANT ALL PRIVILEGES ON SCHEMA "{self.nom_schema}" TO "{self.nom_utilisateur}";')
+cursor.execute(f'GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA "{self.nom_schema}" TO "{self.nom_utilisateur}";')
+cursor.execute(f'ALTER DEFAULT PRIVILEGES IN SCHEMA "{self.nom_schema}" GRANT ALL PRIVILEGES ON TABLES TO "{self.nom_utilisateur}";')
+
+#cursor.execute(f'SET search_path TO "{nom_schema}";')
+
+
+f_import_txt :   
+cursor.execute(f'SET search_path TO "{nom_schema}";')
+insert_query = f"INSERT INTO {table} ({','.join(all_chmp)}) VALUES ({','.join(all_value)});"
+ # Différer la vérification des contraintes de clé étrangère pour toutes les tables
+cursor.execute("SET CONSTRAINTS ALL DEFERRED")
+        # exécution des requêtes 
+        for query in queries:
+            cursor.execute(query)
+        # vérification des contraintes de clé étrangère à la fin de la transaction
+        cursor.execute("SET CONSTRAINTS ALL IMMEDIATE")
+        connexion.commit()
+    except:
+        connexion.rollback()
+        raise
+
+f_import_excel : 
+SQL = "INSERT INTO %s(%s) VALUES (%s);" % (TABLE, list_key, list_value) 
+
+f_affichage_table : 
+ cursor.execute(f'''
+        SELECT column_name
+        FROM information_schema.columns
+        WHERE table_schema = '{schema}'
+        AND table_name = '{table}'
+        AND data_type IN ('smallint', 'integer', 'bigint', 'numeric', 'real', 'double precision')
+    ''')
+
+
+    # Récupération des noms des colonnes de la table dans l'ordre de la base de données
+    cursor.execute(f"SELECT column_name FROM information_schema.columns WHERE table_schema='{nom_schema}' AND table_name='{nom_table}' ORDER BY ordinal_position;")
+    
+    # Récupération des données de la table pour la page demandée
+    cursor.execute(f'SELECT {", ".join(colonnes)} FROM "{nom_table}" LIMIT {ligne_par_page} OFFSET {offset};')
+    
+f_update_table : 
+
+ where_clause = ' AND '.join([f"{table_cles_primaires[nom_table][i]} = %s" for i in range(len(table_cles_primaires[nom_table]))])
+            query = f"UPDATE {nom_table} SET {set_clause} WHERE {where_clause}"
+            valeurs = ligne + valeur_initiale
+            #print(query, valeurs)
+
+            cursor.execute(query, valeurs)
+
+            # Exécuter une requête SELECT après chaque mise à jour pour récupérer les résultats
+            select_query = f"SELECT * FROM {nom_table} WHERE {where_clause}"
+            cursor.execute(select_query, valeurs_primary_key)

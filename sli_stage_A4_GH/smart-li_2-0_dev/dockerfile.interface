@@ -1,0 +1,10 @@
+# Utilisation d'une image de base contenant Apache HTTP Server (httpd)
+FROM httpd:2.4
+
+# Copiez les fichiers HTML et static 
+COPY templates /usr/local/apache2/htdocs/templates/
+COPY static /usr/local/apache2/htdocs/static/
+
+
+# Exposez le port sur lequel Apache HTTP Server écoute (le port 80 est déjà exposé par défaut dans l'image httpd)
+EXPOSE 80

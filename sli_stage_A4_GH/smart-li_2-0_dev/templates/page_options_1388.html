@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+	<title>Options S3000L</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/css_page_options_1388.css') }}">
+
+	
+</head>
+<body>
+   
+    <div class="images">
+        <div class="icone-accueil">
+          <img src="{{url_for('static', filename='images/home (1).png')}}" alt="Accueil" class="icone" id="icone_accueil">
+        </div>
+        <img id="image_smart-li" src="{{url_for('static', filename='images/smartLI_im_logo_sans_arriere_plan2.png')}}" alt="Smart-li">
+        <div class="icone-deconnexion">
+          <img src="{{url_for('static', filename='images/power-off.png')}}" alt="Déconnexion" class="icone" id="icone_deconnexion">
+        </div>
+      </div>
+
+        <div id="nom_projet">
+            <span id="labelSpan" >Nom du projet : <span id="valeurSpan" ></span></span>
+            
+            <hr id="underline">
+          </div>
+
+        <div class="bouton_gen_vider">
+            <button id="btn-vider" onclick="Popup_Vider_Table()" >Vider les tables</button>
+        </div>
+        <div class="options">
+            
+            <div id="bloc_import" class="bloc">
+                <img  src="{{url_for('static', filename='images/image_import3.png')}}" alt="image2">
+                <label>Importer le DUMP</label>
+            </div>
+            <div id="bloc_tables" class="bloc">
+                <img  src="{{url_for('static', filename='images/image_tables2.png')}}" alt="image2">
+                <label>Les tables au format MIL-STD</label>
+            </div>
+            <div id="bloc_export" class="bloc">
+                <img style="margin-top: 10px" src="{{url_for('static', filename='images/image_export1.png')}}" alt="image2">
+                <label style="margin-top: 25px">Exporter le DUMP</label>
+            </div>  
+
+        </div>
+        <!-- boîte de dialogue pour importer un fichier -->
+        <div id="arriere_plan_popup_impo" class="arriere_plan_popup">
+            <div id="impo_popup" class="impo_popup">
+                <span class="fermer" onclick="fermerImpoDialog()">&times;</span>
+
+                <div class="titre_impo_popup">
+                <h2>Fichier Texte ou Excel</h2>
+                </div>
+            <form method="POST" action="{{ url_for('import_fichier_1388') }}" enctype="multipart/form-data" id="upload-form" >
+                <div class="choix_fichier" >
+                  <label for="file"></label>
+                  <input type="file" class="form-control-file" id="file" name="file" accept=".txt, .xls, .xlsx">
+                </div>
+                    <button type="submit" id="submit_impo_btn" class="btn_selection_fichier" style="display:none;">Importer le fichier</button>
+
+            </form>
+                <div class="btn-impo">
+                    <button id="import_txt_btn"  onclick="choix_fichier_import_dump_txt_Excel_1388()" >Importer</button>
+                    <div id="alert" style="margin-left: 10px; background-color: #fff;"> </div>
+                </div>
+                    
+        </div>
+        </div>
+        <!-- Boîte de dialogue pour choisir la table -->
+        <div id="arriere_plan_popup_tables" class="arriere_plan_popup">
+            <div id="popup_tables" class="popup_tables">
+            <span class="fermer" onclick="fermerTableDialog()">&times;</span>
+
+            <div class="titre_popup_tables">
+                <h2>Choisissez la table à ouvrir :</h2>
+            </div>
+            <form id="form_liste_tables">
+                <select style="font-size: medium;" id="table_select"></select>
+                <button type="submit" onclick="confirmeTable()">Confirmer</button>
+            </form>
+            </div>
+        </div>       
+         <!-- Boîte de dialogue pour EXPORTER LE DUMP -->
+        <div id="arriere_plan_popup_expo" class="arriere_plan_popup">
+            <div id="popup_expo" class="popup_expo">
+              <span class="fermer" onclick="fermerPopupExpo()">&times;</span>
+              <div class="titre_expo_popup">
+                <h2>Exporter le DUMP</h2>
+              </div>
+              <div class="image-txtexl">
+                <img src="{{url_for('static', filename='images/icone_txt_download.png')}}" alt="Image TXT" class="popup-image-txtexl" id="icone_txt">
+                <img src="{{url_for('static', filename='images/icone_excel_download.png')}}" alt="Image EXCEL" class="popup-image-txtexl" id="icone_excel">
+              </div>
+            </div>
+          </div>
+            <!-- boîte de dialogue pour VIDER un projet -->
+            <div id="popup_vider" class="popup_vider">
+                <div id="popup_vider_table" class="popup_vider_table">
+                <span class="fermer" onclick="fermerPopupViderTable()">&times;</span>
+                <h3 class="message">Voulez-vous vider définitivement les tables de ce projet : <span id="nom_projet_a_supp" style="color:rgb(215, 0, 0); font-weight: bolder;"></span></h3>
+                <div class="image_poubelle">
+                    <img  src="{{url_for('static', filename='images/image_poubelle.png')}}"  alt="Suppression" >
+                </div>
+                <div class="boutons_supp">
+                    <button class="annuler" onclick="annulerVider()">Annuler</button>
+                    <button class="supprimer" onclick="confirmeVider()">Supprimer</button>
+                </div>
+                </div>
+            </div>
+                        
+              
+    
+           
+       
+        
+        
+        <script  src="{{ url_for('static', filename='javascript/js_page_options_1388.js') }}"></script>
+
+</body>
+</html>

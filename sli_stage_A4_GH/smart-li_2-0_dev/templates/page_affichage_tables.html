@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Viewer</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/css_page_tables.css') }}">
+
+<body>
+    <div id="titres">
+    <div class="bloc-label">
+        <span id="labelSpan" >Projet : <span id="valeurSpan" ></span></span>
+        
+        <hr id="underline">
+      </div>
+      <div  class="bloc-label">
+        <span id="labelSpan2" >Table : <span id="valeurSpan2" ></span></span>
+        <select id="table_select" style="display: none;"></select>
+        <hr id="underline">
+      </div>
+      <img   src="{{url_for('static', filename='images/icone_exit.png')}}"  alt="Exit" id="icone_exit">
+    </div>
+</div>
+    <div id="bloc-table">
+        
+        <table id="data-table">
+            <thead>
+                
+                <!-- Ajout de la balise <tr> pour construire la ligne qui contiendra les cases <th> de l'en-têtes de la table -->
+                <!-- <th> pour le checkbox | <th> pour la numerotation | <th> * pour chaque colonne -->
+
+            </thead>
+            <tbody>
+
+                <!-- Les lignes de la table seront ajoutées dynamiquement ici -->
+            <!-- <tr>  -->
+                <!-- <td> pour le checkbox | <td> pour la numerotation | <td> * pour chaque colonne -->
+            <!-- </tr> -->
+
+            </tbody>
+        </table>
+        
+    </div>
+    <div class="pagination">
+        <button class="bouton-precedente" id="bouton_page_precedente" onclick="page_precedente()">&lt;</button>
+        <input id="input_pagination" class="page-input" type="text" >
+        <span  class="total-pages"> </span>
+        <button class="bouton-suivante" id="bouton_page_suivante" onclick="page_suivante()">&gt;</button>
+      </div>
+    <div style="width: 70%; display: flex; justify-content: center; margin-top: 10px; ">
+        
+        <button id="confirm-bouton" class="bouton-enregistrer"  onclick="updateTable2()" >Enregistrer</button>
+    </div>
+    
+    <script  src="{{ url_for('static', filename='javascript/js_page_tables.js') }}"></script>
+
+  
+</body>
+</html>
